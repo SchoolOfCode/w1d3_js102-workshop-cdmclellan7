@@ -5,13 +5,17 @@ let realPassword = "abc";
 function authenticateUser() {
     while (attempts < 3) {
         userPassword = prompt(`Please enter the password. You have ${3 - attempts} attempt${attempts===2 ? "" :"s"} remaining.`);
-        if (userPassword === realPassword) {
+        if (checkPasswords(realPassword, userPassword)) {
             return true;
         } else {
             attempts++;
         }
     }
     return false;
+}
+
+function checkPasswords(real, input) {
+    return real === input;
 }
 
 function tellSecrets(isLoggedIn) {
@@ -22,5 +26,5 @@ function tellSecrets(isLoggedIn) {
     }
 }
 
-let user = authenticateUser();
-tellSecrets(user);
+let userAuthenticated = authenticateUser();
+tellSecrets(userAuthenticated);
