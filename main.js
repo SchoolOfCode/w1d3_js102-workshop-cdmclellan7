@@ -1,8 +1,9 @@
 let attempts = 0;
+let password = "";
 
 function authenticateUser() {
     while (attempts < 3) {
-        let password = prompt("Please enter the password");
+        password = prompt(`Please enter the password. You have ${3 - attempts} attempt${attempts===2 ? "" :"s"} remaining.`);
         if (password === "abc") {
             return true;
         } else {
